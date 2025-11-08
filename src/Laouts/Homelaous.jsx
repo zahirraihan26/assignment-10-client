@@ -1,6 +1,8 @@
 
 import React from 'react';
 import Navbar from '../Component/Navbar/Navbar';
+import { Outlet } from 'react-router';
+import Footer from '../Component/Footer/Footer';
 
 const Homelaous = () => {
     return (
@@ -10,6 +12,11 @@ const Homelaous = () => {
                 <Navbar></Navbar>
                
             </header>
+
+            <section className=''>
+                <Outlet></Outlet>
+            </section>
+            <Footer></Footer>
 
             {/* <section className="  mt-2">
                
