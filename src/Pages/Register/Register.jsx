@@ -1,6 +1,7 @@
 import React, { use, useState } from 'react';
 import { Link, useNavigate } from 'react-router';
 import { AuthContext } from '../../Provider/Authprovider';
+import { toast } from 'react-toastify';
 
 const Register = () => {
     const { createUser, setuser, signInWithGoogle } = use(AuthContext)
@@ -59,7 +60,7 @@ const Register = () => {
             })
             .catch((error) => {
                 const errorMessage = error.message
-                alert(errorMessage)
+                toast(errorMessage)
             })
 
     }

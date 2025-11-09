@@ -3,13 +3,20 @@ import Homelaous from "../Laouts/Homelaous";
 import Register from "../Pages/Register/Register";
 import Authlaous from "../Laouts/Authlaous";
 import Login from "../Pages/Login/Login";
+import Home from "../Pages/Home/Home";
 
 
 const router=createBrowserRouter(
     [
         {
             path:'/',
-            element:<Homelaous></Homelaous>
+            element:<Homelaous></Homelaous>,
+            children:[
+                {
+                    path:'/',
+                    element:<Home></Home>
+                }
+            ]
         },
         {
             path:'/auth',

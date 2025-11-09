@@ -13,7 +13,7 @@ const Homelaous = () => {
                
             </header>
 
-            <section className=''>
+            <section className='mt-10 '>
                 <Outlet></Outlet>
             </section>
             <Footer></Footer>

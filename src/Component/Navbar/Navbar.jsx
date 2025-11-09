@@ -5,6 +5,7 @@ import { Link, NavLink } from "react-router";
 import { AuthContext } from "../../Provider/Authprovider";
 import { Film, Menu, X } from "lucide-react";
 import img from "../../assets/react.svg"; 
+import { toast } from "react-toastify";
 
 const Navbar = () => {
   const { user, logout } = useContext(AuthContext);
@@ -12,12 +13,12 @@ const Navbar = () => {
 
   const handleLogout = () => {
     logout()
-      .then(() => alert("Logout successfully ✅"))
+      .then(() => toast("Logout successfully ✅"))
       .catch((err) => console.error(err));
   };
 
   return (
-    <nav className="bg-[#1B222C] text-white shadow-md w-full fixed top-0 left-0 z-50">
+    <nav className="bg-[#1B222C] text-white shadow-md w-full  fixed  top-0 left-0 z-50">
       <div className="flex justify-between items-center py-3 px-6 md:px-12 lg:px-20">
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2">
@@ -96,7 +97,7 @@ const Navbar = () => {
           className="md:hidden focus:outline-none"
           onClick={() => setMenuOpen(!menuOpen)}
         >
-          {menuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          {menuOpen ? <X className="w-6 h-6" /> : <Menu className="w-3 h-6" />}
         </button>
       </div>
 
