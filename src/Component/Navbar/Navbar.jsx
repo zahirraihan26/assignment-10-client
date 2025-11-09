@@ -1,10 +1,10 @@
 
 
 import React, { useContext, useState } from "react";
-import { Link, NavLink } from "react-router"; 
+import { Link, NavLink } from "react-router";
 import { AuthContext } from "../../Provider/Authprovider";
 import { Film, Menu, X } from "lucide-react";
-import img from "../../assets/react.svg"; 
+import img from "../../assets/react.svg";
 import { toast } from "react-toastify";
 
 const Navbar = () => {
@@ -25,7 +25,7 @@ const Navbar = () => {
           <Film className="w-6 h-6 text-[#FF3B3B]" />
           <h1 className="text-xl font-semibold">
             <span className="text-2xl font-bold bg-gradient-to-r from-[#FF3B3B] to-[#FFC14F] bg-clip-text text-transparent">Movie Master Pro</span>
-           
+
           </h1>
         </Link>
 
@@ -56,6 +56,15 @@ const Navbar = () => {
             }
           >
             My Collection
+          </NavLink>
+
+          <NavLink
+            to="/movies/add"
+            className={({ isActive }) =>
+              isActive ? "text-yellow-400" : "hover:text-yellow-400"
+            }
+          >
+            Add Movie
           </NavLink>
 
           {user ? (

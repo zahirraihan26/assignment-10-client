@@ -6,6 +6,8 @@ import Login from "../Pages/Login/Login";
 import Home from "../Pages/Home/Home";
 import Allmovies from "../Pages/Allmovies/Allmovies";
 import Moviedetails from "../Pages/Moviedetails/Moviedetails";
+import AddNewmovie from "../Pages/AddNewmovie/AddNewmovie";
+import Privetrouts from "./Privetrouts";
 
 
 const router=createBrowserRouter(
@@ -20,7 +22,8 @@ const router=createBrowserRouter(
                 },
                 {
                     path:'/movies',
-                    element:<Allmovies></Allmovies>
+                    element:<Allmovies></Allmovies>,
+                    loader:()=>fetch('http://localhost:3000/movies')
                 },
                 {
                     path:"/movies/:id",
@@ -28,6 +31,16 @@ const router=createBrowserRouter(
                 },
             ]
         },
+
+        {
+          path:"/movies/add",
+          element:(
+            <Privetrouts>
+                <AddNewmovie></AddNewmovie>
+            </Privetrouts>
+          )
+        },
+
         {
             path:'/auth',
             element:<Authlaous></Authlaous>,
