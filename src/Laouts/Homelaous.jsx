@@ -8,7 +8,7 @@ const Homelaous = () => {
     return (
         <div className="flex flex-col ">
 
-            <header  className="shadow-md sticky top-0 z-50">
+            <header  className="shadow-md  sticky top-0 z-50">
                 <Navbar></Navbar>
                
             </header>

@@ -4,6 +4,8 @@ import Register from "../Pages/Register/Register";
 import Authlaous from "../Laouts/Authlaous";
 import Login from "../Pages/Login/Login";
 import Home from "../Pages/Home/Home";
+import Allmovies from "../Pages/Allmovies/Allmovies";
+import Moviedetails from "../Pages/Moviedetails/Moviedetails";
 
 
 const router=createBrowserRouter(
@@ -15,7 +17,15 @@ const router=createBrowserRouter(
                 {
                     path:'/',
                     element:<Home></Home>
-                }
+                },
+                {
+                    path:'/movies',
+                    element:<Allmovies></Allmovies>
+                },
+                {
+                    path:"/movies/:id",
+                    element:<Moviedetails></Moviedetails>
+                },
             ]
         },
         {
