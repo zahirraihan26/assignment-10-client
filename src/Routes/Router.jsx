@@ -27,7 +27,8 @@ const router=createBrowserRouter(
                 },
                 {
                     path:"/movies/:id",
-                    element:<Moviedetails></Moviedetails>
+                    element:<Moviedetails></Moviedetails>,
+                    loader:({params})=>fetch(`http://localhost:3000/movies/${params.id}`)
                 },
             ]
         },

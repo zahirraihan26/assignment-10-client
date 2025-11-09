@@ -1,32 +1,13 @@
-import React, { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router";
+import React from "react";
 import { FaStar, FaRegCalendar, FaRegClock, FaGlobe } from "react-icons/fa";
+import { Link, useLoaderData } from "react-router";
 
 const Moviedetails = () => {
-  const { id } = useParams();
-  const navigate = useNavigate();
-  const [movie, setMovie] = useState(null);
+ const data = useLoaderData()
+ const movie= data.result
+//  console.log(movie)
 
-  useEffect(() => {
-    fetch("/movie.json")
-      .then((res) => res.json())
-      .then((data) => {
-        // Match either _id (string) or index (number)
-        const selectedMovie = data.find(
-          (m, index) => m._id === id || index.toString() === id
-        );
-        setMovie(selectedMovie);
-      })
-      .catch((err) => console.error("Error loading movie:", err));
-  }, [id]);
-
-  if (!movie) {
-    return (
-      <div className="flex items-center justify-center min-h-screen text-white">
-        Loading...
-      </div>
-    );
-  }
+ 
 
   return (
     <div className="bg-[#232837] min-h-screen flex items-center px-8 py-10">
@@ -118,12 +99,12 @@ const Moviedetails = () => {
           </div>
 
           {/* Back Button */}
-          <button
-            onClick={() => navigate(-1)}
+          <Link
+            to='/'
             className="bg-gradient-to-r from-[#FF3B3B] to-[#FFC14F] text-white px-4 py-1.5 rounded-lg font-medium 0 transition w-32"
           >
             Back
-          </button>
+          </Link>
         </div>
       </div>
     </div>
