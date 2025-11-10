@@ -8,6 +8,7 @@ import Allmovies from "../Pages/Allmovies/Allmovies";
 import Moviedetails from "../Pages/Moviedetails/Moviedetails";
 import AddNewmovie from "../Pages/AddNewmovie/AddNewmovie";
 import Privetrouts from "./Privetrouts";
+import Updatemovie from "../Pages/Updatemovie/Updatemovie";
 
 
 const router=createBrowserRouter(
@@ -40,6 +41,15 @@ const router=createBrowserRouter(
                 <AddNewmovie></AddNewmovie>
             </Privetrouts>
           )
+        },
+        {
+            path:"/movies/update/:id",
+            element:(
+                <Privetrouts>
+                    <Updatemovie></Updatemovie>
+                </Privetrouts>
+            ),
+            loader:({params})=>fetch(`http://localhost:3000/movies/${params.id}`)
         },
 
         {

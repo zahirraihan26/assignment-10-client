@@ -1,16 +1,15 @@
-import { Film } from 'lucide-react';
+
+import React from 'react';
 import Navbar from '../../Component/Navbar/Navbar';
 import Footer from '../../Component/Footer/Footer';
-import { use } from 'react';
-import { AuthContext } from '../../Provider/Authprovider';
+import { Film } from 'lucide-react';
+import { Link, useLoaderData } from 'react-router';
 import { toast } from 'react-toastify';
 
-
-const AddNewmovie = () => {
-    const {user}=use(AuthContext)
-    
-
-    const handelsubmmit =(e)=>{
+const Updatemovie = () => {
+    const data = useLoaderData()
+     const movie= data.result
+     const handelsubmmit =(e)=>{
         e.preventDefault()
 
         const formData={
@@ -25,13 +24,13 @@ const AddNewmovie = () => {
             cast:e.target.cast.value,
             posterUrl:e.target.posterUrl.value,
             plotSummary:e.target.plotSummary.value,
-            addedBy:user.email
+            
 
         }
         
 
-        fetch('http://localhost:3000/movies',{
-          method:"POST",
+        fetch(`http://localhost:3000/movies/${movie._id}`,{
+          method:"PUT",
           headers:{
             "Content-Type": "application/json",
           },
@@ -39,25 +38,29 @@ const AddNewmovie = () => {
         })
         .then(res => res.json())
         .then(data=>{
-             toast.success("Successfully added!")
             console.log(data)
+            toast.success("Movie succesfully updated ")
         })
         .catch(err=>{
             console.log(err)
+            toast.error("data update fall")
         })
 
     }
 
-    return (
+
+     
+   return (
         <div>
             <header className='mb-6'>
                 <Navbar></Navbar>
             </header>
             <div className="bg-[#232837] min-h-screen flex items-center justify-center p-4">
-                <form onSubmit={handelsubmmit} className="bg-[#232837] px-8 py-10 rounded-2xl max-w-3xl mx-auto w-full shadow-xl border border-gray-700" >
+                
+                <form onSubmit={handelsubmmit}  className="bg-[#232837] px-8 py-10 rounded-2xl max-w-3xl mx-auto w-full shadow-xl border border-gray-700" >
                     <div className="flex items-center gap-3 mb-8">
                         <Film className="w-10 h-10 text-[#FF3B3B]" />
-                        <h2 className="text-white text-3xl font-bold">Add New Movie</h2>
+                        <h2 className="text-white text-3xl font-bold">Update Movie</h2>
                     </div>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
 
@@ -65,6 +68,7 @@ const AddNewmovie = () => {
                             <label className="block text-start text-gray-200 mb-2 font-semibold">Title *</label>
                             <textarea
                                 name="title"
+                                defaultValue={movie.title}
                                 rows="1"
                                 required
                                 className="w-full px-4 py-3 rounded-lg bg-[#242837] text-white focus:outline-none border border-gray-700"
@@ -75,7 +79,7 @@ const AddNewmovie = () => {
                         <div>
                             <label className="block text-start text-gray-200 mb-2 font-semibold">Genre *</label>
                             <select
-                                defaultValue={""}
+                                defaultValue={movie.genre}
                                 name="genre"
                                 required
                                 className="w-full px-4 py-3 rounded-lg bg-[#242837] text-white focus:outline-none border border-gray-700"
@@ -97,6 +101,7 @@ const AddNewmovie = () => {
                             <label className="block text-start text-gray-200 mb-2 font-semibold">Release Year *</label>
                             <textarea
                                 name="releaseYear"
+                                defaultValue={movie.releaseYear}
                                 rows="1"
                                 required
                                 className="w-full px-4 py-3 rounded-lg bg-[#242837] text-white focus:outline-none border border-gray-700"
@@ -108,6 +113,7 @@ const AddNewmovie = () => {
                             <label className="block text-start text-gray-200 mb-2 font-semibold">Director *</label>
                             <textarea
                                 name="director"
+                                defaultValue={movie.director}
                                 rows="1"
                                 required
                                 className="w-full px-4 py-3 rounded-lg bg-[#242837] text-white focus:outline-none border border-gray-700"
@@ -119,6 +125,7 @@ const AddNewmovie = () => {
                             <label className="block text-start text-gray-200 mb-2 font-semibold">Rating (0-10) *</label>
                             <textarea
                                 name="rating"
+                                defaultValue={movie.rating}
                                 rows="1"
                                 required
                                 className="w-full px-4 py-3 rounded-lg bg-[#242837] text-white focus:outline-none border border-gray-700"
@@ -130,6 +137,7 @@ const AddNewmovie = () => {
                             <label className="block text-start text-gray-200 mb-2 font-semibold">Duration (minutes) *</label>
                             <textarea
                                 name="duration"
+                                defaultValue={movie.duration}
                                 rows="1"
                                 required
                                 className="w-full px-4 py-3 rounded-lg bg-[#242837] text-white focus:outline-none border border-gray-700"
@@ -141,6 +149,7 @@ const AddNewmovie = () => {
                             <label className="block text-start text-gray-200 mb-2 font-semibold">Language *</label>
                             <textarea
                                 name="language"
+                                defaultValue={movie.language}
                                 rows="1"
                                 required
                                 className="w-full px-4 py-3 rounded-lg bg-[#242837] text-white focus:outline-none border border-gray-700"
@@ -153,6 +162,7 @@ const AddNewmovie = () => {
                             <label className="block text-start text-gray-200 mb-2 font-semibold">Country *</label>
                             <textarea
                                 name="country"
+                                defaultValue={movie.country}
                                 rows="1"
                                 required
                                 className="w-full px-4 py-3 rounded-lg bg-[#242837] text-white focus:outline-none border border-gray-700"
@@ -164,6 +174,7 @@ const AddNewmovie = () => {
                             <label className="block text-start text-gray-200 mb-2 font-semibold">Cast *</label>
                             <textarea
                                 name="cast"
+                                defaultValue={movie.cast}
                                 rows="1"
                                 required
                                 className="w-full px-4 py-3 rounded-lg bg-[#242837] text-white focus:outline-none border border-gray-700"
@@ -175,6 +186,7 @@ const AddNewmovie = () => {
                             <label className="block text-start text-gray-200 mb-2 font-semibold">Poster URL *</label>
                             <textarea
                                 name="posterUrl"
+                                defaultValue={movie.posterUrl}
                                 rows="1"
                                 required
                                 className="w-full px-4 py-3 rounded-lg bg-[#242837] text-white focus:outline-none border border-gray-700"
@@ -186,6 +198,7 @@ const AddNewmovie = () => {
                             <label className="block text-start text-gray-200 mb-2 font-semibold">Plot Summary *</label>
                             <textarea
                                 name="plotSummary"
+                                defaultValue={movie.plotSummary}
                                 required
                                 className="w-full px-4 py-3 rounded-lg bg-[#242837] text-white focus:outline-none border border-gray-700"
 
@@ -202,12 +215,12 @@ const AddNewmovie = () => {
                             type="submit"
                             className="flex-1 py-3 rounded-lg text-white font-semibold bg-gradient-to-r from-[#FF3B3B] to-[#FFC14F] hover:bg-red-600 transition"
                         >
-                            Add Movie
+                            Update movie
                         </button>
 
-                        <button type="button" className="px-8 py-3 rounded-lg text-white font-semibold bg-gradient-to-r from-[#FF3B3B] to-[#FFC14F]">
+                        <Link to={`/movies/${movie._id}`} type="button" className="px-8 py-3 rounded-lg text-white font-semibold bg-gradient-to-r from-[#FF3B3B] to-[#FFC14F]">
                             Cancel
-                        </button>
+                        </Link>
                     </div>
                 </form>
             </div>
@@ -218,8 +231,4 @@ const AddNewmovie = () => {
     );
 };
 
-export default AddNewmovie;
-
-
-
-
+export default Updatemovie;
