@@ -5,6 +5,8 @@ import StatsSection from "../StatsSection/StatsSection";
 import Genresection from "../Genresection/Genresection";
 import Abouts from "../Abouts/Abouts";
 import Topratedmovie from "../Topratedmovie/Topratedmovie";
+import Recentlyaddedmovie from "../Recentlyaddedmovie/Recentlyaddedmovie";
+
 
 
 const Home = () => {
@@ -25,6 +27,7 @@ const Home = () => {
         <h1 className="font-bold text-4xl p-3">Recently Added</h1>
         <p className="font-semibold text-2xl p-3">Fresh additions to the collection</p>
 
+        <Recentlyaddedmovie></Recentlyaddedmovie>
 
       </div>
 

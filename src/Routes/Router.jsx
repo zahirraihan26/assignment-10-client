@@ -11,6 +11,8 @@ import Privetrouts from "./Privetrouts";
 import Updatemovie from "../Pages/Updatemovie/Updatemovie";
 
 
+
+
 const router=createBrowserRouter(
     [
         {
@@ -19,7 +21,9 @@ const router=createBrowserRouter(
             children:[
                 {
                     path:'/',
-                    element:<Home></Home>
+                    element:<Home></Home>,
+                    loader:()=>fetch('http://localhost:3000/latest-movie')
+                    
                 },
                 {
                     path:'/movies',
@@ -33,6 +37,7 @@ const router=createBrowserRouter(
                 },
             ]
         },
+       
 
         {
           path:"/movies/add",
@@ -67,10 +72,7 @@ const router=createBrowserRouter(
 
             ]
         },
-        {
-            path:'/news',
-            element:<h1>News </h1>
-        },
+       
         {
             path:'/*',
             element:<h1>Error 404 </h1>

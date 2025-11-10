@@ -25,7 +25,8 @@ const AddNewmovie = () => {
             cast:e.target.cast.value,
             posterUrl:e.target.posterUrl.value,
             plotSummary:e.target.plotSummary.value,
-            addedBy:user.email
+             created_at: new Date(),
+            addedBy:user.email,
 
         }
         
@@ -89,6 +90,8 @@ const AddNewmovie = () => {
                                 <option value="Sci-Fi">Sci-Fi</option>
                                 <option value="Horror">Horror</option>
                                 <option value="Romance">Romance</option>
+                                <option value="Thriller">Thriller</option>
+                                <option value="Biography">Biography</option>
                             </select>
                         </div>
 

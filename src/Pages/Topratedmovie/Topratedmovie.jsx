@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Moviecard from "../../Component/Moviecard/Moviecard";
+import Loading from "../../Component/Loading/Loading";
 
 const Topratedmovie = () => {
   const [movies, setMovies] = useState([]);
@@ -25,9 +26,9 @@ const Topratedmovie = () => {
             <Moviecard key={movie._id} movie={movie} />
           ))
         ) : (
-          <p className="text-gray-500 text-center col-span-full">
-            Loading top-rated movies...
-          </p>
+          <div className="text-gray-500 text-center col-span-full">
+            <Loading></Loading>
+          </div>
         )}
       </div>
     </div>
