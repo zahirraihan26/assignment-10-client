@@ -9,6 +9,7 @@ import Moviedetails from "../Pages/Moviedetails/Moviedetails";
 import AddNewmovie from "../Pages/AddNewmovie/AddNewmovie";
 import Privetrouts from "./Privetrouts";
 import Updatemovie from "../Pages/Updatemovie/Updatemovie";
+import Mycollection from "../Pages/Mycollection/Mycollection";
 
 
 
@@ -38,7 +39,7 @@ const router=createBrowserRouter(
             ]
         },
        
-
+       
         {
           path:"/movies/add",
           element:(
@@ -47,6 +48,15 @@ const router=createBrowserRouter(
             </Privetrouts>
           )
         },
+        {
+          path:"/my-collection",
+          element:(
+            <Privetrouts>
+                <Mycollection></Mycollection>
+            </Privetrouts>
+          )
+        },
+       
         {
             path:"/movies/update/:id",
             element:(

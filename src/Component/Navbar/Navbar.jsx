@@ -50,7 +50,7 @@ const Navbar = () => {
           </NavLink>
 
           <NavLink
-            to="/mycollection,"
+            to="/my-collection"
             className={({ isActive }) =>
               isActive ? "text-yellow-400" : "hover:text-yellow-400"
             }

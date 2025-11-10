@@ -4,7 +4,7 @@ import { FaStar, FaRegCalendar, FaRegClock } from "react-icons/fa";
 import { Link } from "react-router";
 
 const Moviecard = ({ movie }) => {
-  const { posterUrl, genre, rating, title, releaseYear, duration, _id } = movie;
+  const { posterUrl, genre, rating, title, releaseYear, duration, _id  } = movie;
 
   return (
     <div className="bg-[#232837] rounded-2xl shadow-lg overflow-hidden flex flex-col w-full border border-gray-700 relative hover:scale-105 transition-transform">
