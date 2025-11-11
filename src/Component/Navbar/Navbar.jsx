@@ -59,6 +59,15 @@ const Navbar = () => {
           </NavLink>
 
           <NavLink
+            to="/mywatchlist"
+            className={({ isActive }) =>
+              isActive ? "text-yellow-400" : "hover:text-yellow-400"
+            }
+          >
+            My Watchlist
+          </NavLink>
+
+          <NavLink
             to="/movies/add"
             className={({ isActive }) =>
               isActive ? "text-yellow-400" : "hover:text-yellow-400"
@@ -66,6 +75,7 @@ const Navbar = () => {
           >
             Add Movie
           </NavLink>
+          
 
           {user ? (
             <div className="flex items-center space-x-3">

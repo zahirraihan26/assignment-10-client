@@ -15,10 +15,10 @@ const Home = () => {
       <div>
         <Banner></Banner>
       </div>
-      <div>
+      <div className="mt-2">
         <StatsSection></StatsSection>
       </div>
-      <div className="flex flex-col items-start">
+      <div className="flex flex-col  items-start">
         <h1 className="font-bold text-4xl p-3">Top Rated Movies</h1>
         <p className="font-semibold text-2xl p-3">The highest-rated films in our collection</p>
           <Topratedmovie></Topratedmovie>

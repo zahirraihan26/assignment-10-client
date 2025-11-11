@@ -1,42 +1,64 @@
-import React from 'react';
-import img from "../../assets/hero-cinema.jpg"
+import React, { useEffect, useState } from "react";
+
 const Banner = () => {
-    return (
-        <div className="relative w-full min-h-screen flex items-center justify-center overflow-hidden">
-      
-      {/* Background Image */}
-      <img
-        src={img}
-        alt="Hero background"
-        className="absolute inset-0 w-full h-full object-cover"
-      />
+  const [topMovies, setTopMovies] = useState([]);
+  const [currentSlide, setCurrentSlide] = useState(0);
 
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-black/60 flex flex-col items-center justify-center text-center px-4 sm:px-8 md:px-12">
-        
-        {/* Headings */}
-        <h1 className="text-white text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-2 leading-tight">
-          Your Ultimate
-        </h1>
+  useEffect(() => {
+    // Fetch top 3 movies
+    fetch("http://localhost:3000/topMovies")
+      .then((res) => res.json())
+      .then((data) => setTopMovies(data.topMovies))
+      .catch((err) => console.error(err));
+  }, []);
 
-        <h1 className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-yellow-400 text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4 leading-tight">
-          Movie Collection
-        </h1>
+  // Auto slide every 5 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % topMovies.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, [topMovies]);
 
-        {/* Subtitle */}
-        <p className="text-blue-200 text-base sm:text-lg md:text-xl lg:text-2xl mb-8 max-w-xl sm:max-w-2xl">
-          Discover, manage, and organize your favorite films in one beautiful place.
-        </p>
+  if (topMovies.length === 0) return null; // Loading state
 
-        {/* Buttons */}
-        <div className="flex flex-col sm:flex-row gap-4 justify-center w-full sm:w-auto">
-          <button className="bg-gradient-to-r from-[#FF3B3B] to-[#FFC14F] text-white hover:scale-105 transition-transform duration-200 text-white font-semibold py-3 px-8 rounded-lg text-sm sm:text-base">
-            Browse Movies
-          </button>
+  return (
+    <div className="relative w-full h-150 rounded-2xl overflow-hidden">
+      {topMovies.map((movie, idx) => (
+        <div
+          key={movie._id}
+          className={`absolute inset-0 transition-opacity duration-1000 ${
+            idx === currentSlide ? "opacity-100" : "opacity-0"
+          }`}
+        >
+          <img
+            src={movie.posterUrl}
+            alt={movie.title}
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute top-1/2 left-10 transform -translate-y-1/2 text-left text-white max-w-md">
+            <h1 className="text-4xl font-bold">{movie.title}</h1>
+            <p className="mt-2 text-lg">⭐ {movie.rating}</p>
+            <button className="text-white px-5 py-3 rounded-xl font-bold mt-3 bg-orange-500 transition-all duration-300 hover:shadow-[0_0_20px_4px_rgba(249,115,22,0.6)]">
+              Browse Movies
+            </button>
+          </div>
         </div>
+      ))}
+
+      {/* Optional: Slide indicators */}
+      <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2">
+        {topMovies.map((_, idx) => (
+          <span
+            key={idx}
+            className={`w-3 h-3 rounded-full ${
+              idx === currentSlide ? "bg-orange-500" : "bg-white/50"
+            }`}
+          />
+        ))}
       </div>
     </div>
-    );
+  );
 };
 
 export default Banner;

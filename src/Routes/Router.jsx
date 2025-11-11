@@ -10,6 +10,7 @@ import AddNewmovie from "../Pages/AddNewmovie/AddNewmovie";
 import Privetrouts from "./Privetrouts";
 import Updatemovie from "../Pages/Updatemovie/Updatemovie";
 import Mycollection from "../Pages/Mycollection/Mycollection";
+import Mywatchlist from "../Pages/Mywatchlist/Mywatchlist";
 
 
 
@@ -55,6 +56,11 @@ const router=createBrowserRouter(
                 <Mycollection></Mycollection>
             </Privetrouts>
           )
+        },
+        {
+          path:"/mywatchlist",
+          element: <Mywatchlist></Mywatchlist>
+    
         },
        
         {

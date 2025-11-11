@@ -23,7 +23,7 @@ useEffect(()=>{
 
 
 if(loading){
-    return <Loading></Loading>
+    return <div> <span className="loading loading-spinner loading-xl"></span> </div>
 }
 
     return (
