@@ -36,12 +36,14 @@ const Mywatchlist = () => {
   }
 
   return (
+    <div>
     <div className="p-6">
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
         {movie.map((item) => (
           <Moviecard key={item._id} movie={item} />
         ))}
       </div>
+    </div>
     </div>
   );
 };

@@ -11,7 +11,8 @@ import Recentlyaddedmovie from "../Recentlyaddedmovie/Recentlyaddedmovie";
 
 const Home = () => {
   return (
-    <div>
+    //  overflow-x-hidden
+    <div className=""> 
       <div>
         <Banner></Banner>
       </div>
@@ -37,7 +38,7 @@ const Home = () => {
 
         <Genresection></Genresection>
       </div>
-      <div className="py-4">
+      <div className="pt-4">
         <Abouts></Abouts>
       </div>
     </div>

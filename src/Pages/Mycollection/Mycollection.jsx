@@ -2,6 +2,8 @@ import React, { use, useEffect, useState } from 'react';
 import { AuthContext } from '../../Provider/Authprovider';
 import Loading from '../../Component/Loading/Loading';
 import Moviecard from '../../Component/Moviecard/Moviecard';
+import Navbar from '../../Component/Navbar/Navbar';
+import Footer from '../../Component/Footer/Footer';
 
 const Mycollection = () => {
     const {user}=use(AuthContext)
@@ -27,12 +29,19 @@ if(loading){
 }
 
     return (
-        <div>
+        <div className=' flex flex-col items-center'>
+            <div className='pb-10'>
+                <Navbar></Navbar>
+            </div>
              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8" >
              {
                 movie.map((movie) =><Moviecard key={movie._id} movie={movie}></Moviecard>)
              }
 
+            </div>
+
+            <div>
+                <Footer></Footer>
             </div>
             
         </div>

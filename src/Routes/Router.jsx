@@ -11,6 +11,8 @@ import Privetrouts from "./Privetrouts";
 import Updatemovie from "../Pages/Updatemovie/Updatemovie";
 import Mycollection from "../Pages/Mycollection/Mycollection";
 import Mywatchlist from "../Pages/Mywatchlist/Mywatchlist";
+import Error from "../Component/Error/Error";
+import Loading from "../Component/Loading/Loading";
 
 
 
@@ -20,22 +22,28 @@ const router=createBrowserRouter(
         {
             path:'/',
             element:<Homelaous></Homelaous>,
+            errorElement:<Error></Error>,
+            hydrateFallbackElement:<Loading></Loading>,
             children:[
                 {
                     path:'/',
                     element:<Home></Home>,
-                    loader:()=>fetch('http://localhost:3000/latest-movie')
+                    loader:()=>fetch('http://localhost:3000/latest-movie'),
+                     hydrateFallbackElement:<Loading></Loading>
                     
                 },
                 {
                     path:'/movies',
                     element:<Allmovies></Allmovies>,
-                    loader:()=>fetch('http://localhost:3000/movies')
+                    loader:()=>fetch('http://localhost:3000/movies'),
+                     hydrateFallbackElement:<Loading></Loading>
                 },
                 {
                     path:"/movies/:id",
                     element:<Moviedetails></Moviedetails>,
-                    loader:({params})=>fetch(`http://localhost:3000/movies/${params.id}`)
+                    loader:({params})=>fetch(`http://localhost:3000/movies/${params.id}`),
+                    hydrateFallbackElement:<Loading></Loading>
+                    
                 },
             ]
         },
@@ -70,7 +78,9 @@ const router=createBrowserRouter(
                     <Updatemovie></Updatemovie>
                 </Privetrouts>
             ),
-            loader:({params})=>fetch(`http://localhost:3000/movies/${params.id}`)
+            loader:({params})=>fetch(`http://localhost:3000/movies/${params.id}`),
+            hydrateFallbackElement:<Loading></Loading>
+
         },
 
         {
@@ -91,7 +101,7 @@ const router=createBrowserRouter(
        
         {
             path:'/*',
-            element:<h1>Error 404 </h1>
+            element:<Error></Error>
         },
     ]);
 

@@ -1,6 +1,4 @@
-
-
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link, NavLink } from "react-router";
 import { AuthContext } from "../../Provider/Authprovider";
 import { Film, Menu, X } from "lucide-react";
@@ -11,6 +9,18 @@ const Navbar = () => {
   const { user, logout } = useContext(AuthContext);
   const [menuOpen, setMenuOpen] = useState(false);
 
+  const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
+
+  useEffect(() => {
+    const html = document.querySelector("html");
+    html.setAttribute("data-theme", theme);
+    localStorage.setItem("theme", theme);
+  }, [theme]);
+
+  const handleTheme = (checked) => {
+    setTheme(checked ? "dark" : "light");
+  };
+
   const handleLogout = () => {
     logout()
       .then(() => toast("Logout successfully ✅"))
@@ -18,14 +28,15 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-[#1B222C] text-white shadow-md w-full  fixed  top-0 left-0 z-50">
-      <div className="flex justify-between items-center py-3 px-6 md:px-12 lg:px-20">
+    <nav className="bg-[#1B222C] text-white shadow-md fixed w-full left-0 top-0 z-50">
+      <div className=" mx-auto flex justify-between items-center py-3 px-4 md:px-8 lg:px-12">
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2">
           <Film className="w-6 h-6 text-[#FF3B3B]" />
           <h1 className="text-xl font-semibold">
-            <span className="text-2xl font-bold bg-gradient-to-r from-[#FF3B3B] to-[#FFC14F] bg-clip-text text-transparent">Movie Master Pro</span>
-
+            <span className="text-2xl font-bold bg-gradient-to-r from-[#FF3B3B] to-[#FFC14F] bg-clip-text text-transparent">
+              Movie Master Pro
+            </span>
           </h1>
         </Link>
 
@@ -75,11 +86,17 @@ const Navbar = () => {
           >
             Add Movie
           </NavLink>
-          
+
+          <input
+            onChange={(e) => handleTheme(e.target.checked)}
+            type="checkbox"
+            defaultChecked={localStorage.getItem("theme") === "dark"}
+            className="toggle"
+          />
 
           {user ? (
             <div className="flex items-center space-x-3">
-              <div className="w-10 h-10 rounded-full overflow-hidden border-2 border-primary ">
+              <div className="w-10 h-10 rounded-full overflow-hidden border-2 border-primary">
                 <img
                   src={user?.photoURL || img}
                   alt="User"
@@ -88,7 +105,7 @@ const Navbar = () => {
               </div>
               <button
                 onClick={handleLogout}
-                className="bg-gradient-to-r from-[#FF3B3B] to-[#FFC14F]  hover:bg-green-600 text-white px-4 py-1.5 rounded-lg font-medium"
+                className="bg-gradient-to-r from-[#FF3B3B] to-[#FFC14F] text-white px-4 py-1.5 rounded-lg font-medium"
               >
                 Logout
               </button>
@@ -116,7 +133,7 @@ const Navbar = () => {
           className="md:hidden focus:outline-none"
           onClick={() => setMenuOpen(!menuOpen)}
         >
-          {menuOpen ? <X className="w-6 h-6" /> : <Menu className="w-3 h-6" />}
+          {menuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
         </button>
       </div>
 
@@ -187,4 +204,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-

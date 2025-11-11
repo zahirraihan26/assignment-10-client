@@ -50,11 +50,11 @@ const AddNewmovie = () => {
     }
 
     return (
-        <div>
+        <div className=' flex flex-col items-center '>
             <header className='mb-6'>
                 <Navbar></Navbar>
             </header>
-            <div className="bg-[#232837] min-h-screen flex items-center justify-center p-4">
+            <div className="bg-[#232837] min-h-screen min-w-screen rounded-2xl flex items-center justify-center p-10">
                 <form onSubmit={handelsubmmit} className="bg-[#232837] px-8 py-10 rounded-2xl max-w-3xl mx-auto w-full shadow-xl border border-gray-700" >
                     <div className="flex items-center gap-3 mb-8">
                         <Film className="w-10 h-10 text-[#FF3B3B]" />

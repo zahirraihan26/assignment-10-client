@@ -52,10 +52,10 @@ const Updatemovie = () => {
      
    return (
         <div>
-            <header className='mb-6'>
+            <header className='mb-8'>
                 <Navbar></Navbar>
             </header>
-            <div className="bg-[#232837] min-h-screen flex items-center justify-center p-4">
+            <div className="bg-[#232837] min-h-screen flex items-center rounded-2xl justify-center p-4">
                 
                 <form onSubmit={handelsubmmit}  className="bg-[#232837] px-8 py-10 rounded-2xl max-w-3xl mx-auto w-full shadow-xl border border-gray-700" >
                     <div className="flex items-center gap-3 mb-8">

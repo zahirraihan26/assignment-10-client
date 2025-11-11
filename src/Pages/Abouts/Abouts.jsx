@@ -5,21 +5,21 @@ import 'aos/dist/aos.css';
 const Abouts = () => {
   useEffect(() => {
     AOS.init({
-      duration: 1000, // smooth animation speed
-      once: false,    // animate every time you scroll into view
-      offset: 100,    // start animation a bit before it's fully visible
+      duration: 1000, 
+      once: false,    
+      offset: 100,    
     });
   }, []);
 
   return (
     <div
       className="flex flex-col items-center justify-center py-10 px-4 bg-gray-800 rounded-2xl"
-      data-aos="fade-up"          // 🔥 fade from bottom to top
-      data-aos-delay="400"        // small delay for smoothness
+      data-aos="fade-up"       
+      data-aos-delay="400"        
     >
       <h1
         className="text-white text-4xl md:text-5xl font-bold text-center mb-8"
-        data-aos="fade-down"      // 🔥 title fades down
+        data-aos="fade-down"      
         data-aos-delay="500"
       >
         About MovieMaster Pro
