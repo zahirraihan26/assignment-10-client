@@ -1,16 +1,29 @@
-# React + Vite
+# 🎬 MovieMania
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Live Site URL:** [https://assignment-10-client-fbd29.web.app/](https://assignment-10-client-fbd29.firebaseapp.com/)
 
-Currently, two official plugins are available:
+## 📖 About the Project
+**MovieMania** is a modern movie exploration web application where users can browse, filter, and view detailed information about various movies.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## ✨ Features
 
-## React Compiler
+- 🔍 **Dynamic Movie Filtering:** Filter movies by genre or rating.  
+- 🎥 **Detailed Movie Page:** View complete movie details including title, rating, description, and release date.  
+- 🔐 **Firebase Authentication:** Login using Google or Email/Password.  
+- 🧭 **Protected Routes:** Private routes accessible only to logged-in users.  
+- 🌐 **Responsive Design:** Fully mobile-friendly using Tailwind CSS and DaisyUI.  
+- 💬 **Toast Notifications:** Display success messages for actions like login or data loading.  
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🛠️ Technologies Used
 
-## Expanding the ESLint configuration
+- **Frontend:** React, Vite  
+- **Styling:** Tailwind CSS, DaisyUI, AOS  
+- **Icons:** Lucide React, React Icons  
+- **Routing:** React Router  
+- **Backend & Hosting:** Firebase  
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🚀 Getting Started
+
+### 1️⃣ Install Dependencies
+```bash
+npm install

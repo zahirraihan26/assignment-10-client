@@ -50,7 +50,7 @@ const Mycollection = () => {
                     {/* Action Buttons */}
                     <div className="flex flex-wrap justify-center md:justify-end gap-3">
                         <Link
-                            to={`/update/${movie._id}`}
+                            
                             className="bg-gradient-to-r from-[#FF3B3B] to-[#FFC14F] text-white px-4 py-1.5 rounded-lg font-semibold transition-all hover:scale-105 hover:shadow-md w-28 text-center"
                         >
                             Update

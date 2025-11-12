@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Link, NavLink } from "react-router"; // <-- fixed import
+import { Link, NavLink } from "react-router";
 import { AuthContext } from "../../Provider/Authprovider";
 import { Film, Menu, X } from "lucide-react";
 import img from "../../assets/react.svg";
