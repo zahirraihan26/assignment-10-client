@@ -9,26 +9,26 @@ const StatsSection = () => {
   const [highestRated, setHighestRated] = useState(null);
 
   useEffect(() => {
-    
+
     AOS.init({
-      duration: 1000, 
-      offset: 100, 
-      easing: "ease-in-out", 
-      once: false, 
+      duration: 1000,
+      offset: 100,
+      easing: "ease-in-out",
+      once: false,
     });
 
     // fetch all data
-    fetch("http://localhost:3000/movieCount")
+    fetch("https://movie-master-pro-server-tau.vercel.app/movieCount")
       .then((res) => res.json())
       .then((data) => setMovieCount(data.totalMovies))
       .catch((err) => console.error(err));
 
-    fetch("http://localhost:3000/userCount")
+    fetch("https://movie-master-pro-server-tau.vercel.app/userCount")
       .then((res) => res.json())
       .then((data) => setUserCount(data.totalUsers))
       .catch((err) => console.error(err));
 
-    fetch("http://localhost:3000/highestRated")
+    fetch("https://movie-master-pro-server-tau.vercel.app/highestRated")
       .then((res) => res.json())
       .then((data) => setHighestRated(data.highestRated))
       .catch((err) => console.error(err));

@@ -12,7 +12,7 @@ const Mycollection = () => {
     const [loading, setloading] = useState(true)
 
     useEffect(() => {
-        fetch(`http://localhost:3000/my-collection?email=${user.email}`, {
+        fetch(`https://movie-master-pro-server-tau.vercel.app/my-collection?email=${user.email}`, {
             headers: {
                 authorization: `Bearer ${user.accessToken}`
             }

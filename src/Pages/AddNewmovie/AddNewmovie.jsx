@@ -7,45 +7,45 @@ import { toast } from 'react-toastify';
 
 
 const AddNewmovie = () => {
-    const {user}=use(AuthContext)
-    
+    const { user } = use(AuthContext)
 
-    const handelsubmmit =(e)=>{
+
+    const handelsubmmit = (e) => {
         e.preventDefault()
 
-        const formData={
-            title:e.target.title.value,
-            genre:e.target.genre.value,
-            releaseYear:e.target.releaseYear.value,
-            director:e.target.director.value,
-            rating:e.target.rating.value,
-            duration:e.target.duration.value,
-            language:e.target.language.value,
-            country:e.target.country.value,
-            cast:e.target.cast.value,
-            posterUrl:e.target.posterUrl.value,
-            plotSummary:e.target.plotSummary.value,
-             created_at: new Date(),
-            addedBy:user.email,
+        const formData = {
+            title: e.target.title.value,
+            genre: e.target.genre.value,
+            releaseYear: e.target.releaseYear.value,
+            director: e.target.director.value,
+            rating: e.target.rating.value,
+            duration: e.target.duration.value,
+            language: e.target.language.value,
+            country: e.target.country.value,
+            cast: e.target.cast.value,
+            posterUrl: e.target.posterUrl.value,
+            plotSummary: e.target.plotSummary.value,
+            created_at: new Date(),
+            addedBy: user.email,
 
         }
-        
 
-        fetch('http://localhost:3000/movies',{
-          method:"POST",
-          headers:{
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(formData)
+
+        fetch('https://movie-master-pro-server-tau.vercel.app/movies', {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(formData)
         })
-        .then(res => res.json())
-        .then(data=>{
-             toast.success("Successfully added!")
-            console.log(data)
-        })
-        .catch(err=>{
-            console.log(err)
-        })
+            .then(res => res.json())
+            .then(data => {
+                toast.success("Successfully added!")
+                console.log(data)
+            })
+            .catch(err => {
+                console.log(err)
+            })
 
     }
 
@@ -54,7 +54,7 @@ const AddNewmovie = () => {
             <header className='mb-6'>
                 <Navbar></Navbar>
             </header>
-            <div className="bg-[#232837] min-h-screen min-w-screen rounded-2xl flex items-center justify-center p-10">
+            <div className=" min-h-screen min-w-screen rounded-2xl flex items-center justify-center p-10">
                 <form onSubmit={handelsubmmit} className="bg-[#232837] px-8 py-10 rounded-2xl max-w-3xl mx-auto w-full shadow-xl border border-gray-700" >
                     <div className="flex items-center gap-3 mb-8">
                         <Film className="w-10 h-10 text-[#FF3B3B]" />

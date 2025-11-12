@@ -18,96 +18,96 @@ import Myprofile from "../Component/Myprofile/Myprofile";
 
 
 
-const router=createBrowserRouter(
+const router = createBrowserRouter(
     [
         {
-            path:'/',
-            element:<Homelaous></Homelaous>,
-            errorElement:<Error></Error>,
-            hydrateFallbackElement:<Loading></Loading>,
-            children:[
+            path: '/',
+            element: <Homelaous></Homelaous>,
+            errorElement: <Error></Error>,
+            hydrateFallbackElement: <Loading></Loading>,
+            children: [
                 {
-                    path:'/',
-                    element:<Home></Home>,
-                    loader:()=>fetch('http://localhost:3000/latest-movie'),
-                     hydrateFallbackElement:<Loading></Loading>
-                    
+                    path: '/',
+                    element: <Home></Home>,
+                    loader: () => fetch('https://movie-master-pro-server-tau.vercel.app/latest-movie'),
+                    hydrateFallbackElement: <Loading></Loading>
+
                 },
                 {
-                    path:'/movies',
-                    element:<Allmovies></Allmovies>,
-                    loader:()=>fetch('http://localhost:3000/movies'),
-                     hydrateFallbackElement:<Loading></Loading>
+                    path: '/movies',
+                    element: <Allmovies></Allmovies>,
+                    loader: () => fetch('https://movie-master-pro-server-tau.vercel.app/movies'),
+                    hydrateFallbackElement: <Loading></Loading>
                 },
                 {
-                    path:"/movies/:id",
-                    element:<Moviedetails></Moviedetails>,
-                    loader:({params})=>fetch(`http://localhost:3000/movies/${params.id}`),
-                    hydrateFallbackElement:<Loading></Loading>
-                    
+                    path: "/movies/:id",
+                    element: <Moviedetails></Moviedetails>,
+                    loader: ({ params }) => fetch(`https://movie-master-pro-server-tau.vercel.app/movies/${params.id}`),
+                    hydrateFallbackElement: <Loading></Loading>
+
                 },
             ]
         },
-       
-       
+
+
         {
-          path:"/movies/add",
-          element:(
-            <Privetrouts>
-                <AddNewmovie></AddNewmovie>
-            </Privetrouts>
-          )
+            path: "/movies/add",
+            element: (
+                <Privetrouts>
+                    <AddNewmovie></AddNewmovie>
+                </Privetrouts>
+            )
         },
         {
-          path:"/my-collection",
-          element:(
-            <Privetrouts>
-                <Mycollection></Mycollection>
-            </Privetrouts>
-          )
+            path: "/my-collection",
+            element: (
+                <Privetrouts>
+                    <Mycollection></Mycollection>
+                </Privetrouts>
+            )
         },
         {
-          path:"/mywatchlist",
-          element: <Mywatchlist></Mywatchlist>
-    
+            path: "/mywatchlist",
+            element: <Mywatchlist></Mywatchlist>
+
         },
-       
+
         {
-            path:"/movies/update/:id",
-            element:(
+            path: "/movies/update/:id",
+            element: (
                 <Privetrouts>
                     <Updatemovie></Updatemovie>
                 </Privetrouts>
             ),
-            loader:({params})=>fetch(`http://localhost:3000/movies/${params.id}`),
-            hydrateFallbackElement:<Loading></Loading>
+            loader: ({ params }) => fetch(`https://movie-master-pro-server-tau.vercel.app/movies/${params.id}`),
+            hydrateFallbackElement: <Loading></Loading>
 
         },
 
         {
-            path:'/auth',
-            element:<Authlaous></Authlaous>,
-            children:[
+            path: '/auth',
+            element: <Authlaous></Authlaous>,
+            children: [
                 {
-                    path:"login",
-                    element:<Login></Login>
+                    path: "login",
+                    element: <Login></Login>
                 },
                 {
-                    path:"register",
-                    element:<Register></Register>
+                    path: "register",
+                    element: <Register></Register>
                 },
 
             ]
         },
         {
-          path:'/myprofile',
-          element:<Myprofile></Myprofile>
+            path: '/myprofile',
+            element: <Myprofile></Myprofile>
         },
-       
+
         {
-            path:'/*',
-            element:<Error></Error>
+            path: '/*',
+            element: <Error></Error>
         },
     ]);
 
-    export default router
+export default router

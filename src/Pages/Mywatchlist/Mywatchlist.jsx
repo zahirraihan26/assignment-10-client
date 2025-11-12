@@ -13,7 +13,7 @@ const Mywatchlist = () => {
     if (!user?.email) return;
 
     setloading(true);
-    fetch(`http://localhost:3000/mywatchlist?email=${user.email}`)
+    fetch(`https://movie-master-pro-server-tau.vercel.app/mywatchlist?email=${user.email}`)
       .then(res => res.json())
       .then(data => {
         setmovie(data);

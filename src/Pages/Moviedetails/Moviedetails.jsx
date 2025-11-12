@@ -26,7 +26,7 @@ const Moviedetails = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:3000/movies/${movie._id}`, {
+        fetch(`https://movie-master-pro-server-tau.vercel.app/movies/${movie._id}`, {
           method: "DELETE",
           headers: {
             "Content-Type": "application/json",
@@ -51,7 +51,7 @@ const Moviedetails = () => {
 
   // Add to watchlist
   const handelwatchlist = () => {
-    fetch(`http://localhost:3000/watchlist`, {
+    fetch(`https://movie-master-pro-server-tau.vercel.app/watchlist`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -78,7 +78,7 @@ const Moviedetails = () => {
     <div className="bg-[#232837] min-h-screen flex items-center justify-center px-4 sm:px-8 py-10">
       <div className="flex flex-col md:flex-row gap-10 lg:gap-16 w-full max-w-6xl mx-auto">
 
-        
+
         {/* Poster Section */}
         <div className="flex-shrink-0 flex justify-center md:justify-start">
           <img

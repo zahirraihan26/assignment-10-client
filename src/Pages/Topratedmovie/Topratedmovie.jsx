@@ -7,19 +7,19 @@ const Topratedmovie = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("http://localhost:3000/movies")
-      .then((res) => res.json())  
-      
+    fetch("https://movie-master-pro-server-tau.vercel.app/movies")
+      .then((res) => res.json())
+
       .then((data) => {
         const sorted = data.sort((a, b) => b.rating - a.rating);
 
         const topFive = sorted.slice(0, 5);
         setMovies(topFive);
-        setLoading(false); 
+        setLoading(false);
       })
       .catch((err) => {
         console.error("Error fetching movies:", err);
-        setLoading(false); 
+        setLoading(false);
       });
   }, []);
 
