@@ -83,7 +83,7 @@ const Allmovies = () => {
                 </select>
             </div>
             {/* ⭐ Rating Filter Section */}
-            <div className='flex justify-center gap-2 mb-6'>
+            <div className='flex justify-center md:justify-end  gap-2 mb-6'>
                 <input
                     type='number'
                     placeholder='Min Rating'
