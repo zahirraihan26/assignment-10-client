@@ -13,6 +13,7 @@ import Mycollection from "../Pages/Mycollection/Mycollection";
 import Mywatchlist from "../Pages/Mywatchlist/Mywatchlist";
 import Error from "../Component/Error/Error";
 import Loading from "../Component/Loading/Loading";
+import Myprofile from "../Component/Myprofile/Myprofile";
 
 
 
@@ -97,6 +98,10 @@ const router=createBrowserRouter(
                 },
 
             ]
+        },
+        {
+          path:'/myprofile',
+          element:<Myprofile></Myprofile>
         },
        
         {

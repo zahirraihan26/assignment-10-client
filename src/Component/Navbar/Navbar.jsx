@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Link, NavLink } from "react-router";
+import { Link, NavLink } from "react-router"; // <-- fixed import
 import { AuthContext } from "../../Provider/Authprovider";
 import { Film, Menu, X } from "lucide-react";
 import img from "../../assets/react.svg";
@@ -27,9 +27,63 @@ const Navbar = () => {
       .catch((err) => console.error(err));
   };
 
+  const menuLinks = (
+    <>
+      <NavLink
+        to="/"
+        onClick={() => setMenuOpen(false)}
+        className={({ isActive }) =>
+          isActive ? "text-yellow-400" : "hover:text-yellow-400"
+        }
+      >
+        Home
+      </NavLink>
+
+      <NavLink
+        to="/movies"
+        onClick={() => setMenuOpen(false)}
+        className={({ isActive }) =>
+          isActive ? "text-yellow-400" : "hover:text-yellow-400"
+        }
+      >
+        All Movies
+      </NavLink>
+
+      <NavLink
+        to="/my-collection"
+        onClick={() => setMenuOpen(false)}
+        className={({ isActive }) =>
+          isActive ? "text-yellow-400" : "hover:text-yellow-400"
+        }
+      >
+        My Collection
+      </NavLink>
+
+      <NavLink
+        to="/mywatchlist"
+        onClick={() => setMenuOpen(false)}
+        className={({ isActive }) =>
+          isActive ? "text-yellow-400" : "hover:text-yellow-400"
+        }
+      >
+        My Watchlist
+      </NavLink>
+
+      <NavLink
+        to="/movies/add"
+        onClick={() => setMenuOpen(false)}
+        className={({ isActive }) =>
+          isActive ? "text-yellow-400" : "hover:text-yellow-400"
+        }
+      >
+        Add Movie
+      </NavLink>
+    </>
+  );
+
   return (
     <nav className="bg-[#1B222C] text-white shadow-md fixed w-full left-0 top-0 z-50">
-      <div className=" mx-auto flex justify-between items-center py-3 px-4 md:px-8 lg:px-12">
+      <div className="mx-auto flex justify-between items-center py-3 px-4 md:px-8 lg:px-12">
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2">
           <Film className="w-6 h-6 text-[#FF3B3B]" />
@@ -42,51 +96,9 @@ const Navbar = () => {
 
         {/* Desktop Menu */}
         <div className="hidden md:flex items-center gap-6 font-medium">
-          <NavLink
-            to="/"
-            className={({ isActive }) =>
-              isActive ? "text-yellow-400" : "hover:text-yellow-400"
-            }
-          >
-            Home
-          </NavLink>
+          {menuLinks}
 
-          <NavLink
-            to="/movies"
-            className={({ isActive }) =>
-              isActive ? "text-yellow-400" : "hover:text-yellow-400"
-            }
-          >
-            All Movies
-          </NavLink>
-
-          <NavLink
-            to="/my-collection"
-            className={({ isActive }) =>
-              isActive ? "text-yellow-400" : "hover:text-yellow-400"
-            }
-          >
-            My Collection
-          </NavLink>
-
-          <NavLink
-            to="/mywatchlist"
-            className={({ isActive }) =>
-              isActive ? "text-yellow-400" : "hover:text-yellow-400"
-            }
-          >
-            My Watchlist
-          </NavLink>
-
-          <NavLink
-            to="/movies/add"
-            className={({ isActive }) =>
-              isActive ? "text-yellow-400" : "hover:text-yellow-400"
-            }
-          >
-            Add Movie
-          </NavLink>
-
+          {/* Theme Switch */}
           <input
             onChange={(e) => handleTheme(e.target.checked)}
             type="checkbox"
@@ -94,15 +106,17 @@ const Navbar = () => {
             className="toggle"
           />
 
+          {/* User/Login Buttons */}
           {user ? (
             <div className="flex items-center space-x-3">
-              <div className="w-10 h-10 rounded-full overflow-hidden border-2 border-primary">
+              <Link to="/myprofile" className="w-10 h-10 rounded-full overflow-hidden border-2 border-primary">
+                
                 <img
                   src={user?.photoURL || img}
                   alt="User"
                   className="w-full h-full object-cover"
                 />
-              </div>
+              </Link>
               <button
                 onClick={handleLogout}
                 className="bg-gradient-to-r from-[#FF3B3B] to-[#FFC14F] text-white px-4 py-1.5 rounded-lg font-medium"
@@ -140,29 +154,19 @@ const Navbar = () => {
       {/* Mobile Dropdown */}
       {menuOpen && (
         <div className="md:hidden bg-[#1B222C] flex flex-col items-center gap-4 py-4 border-t border-gray-700">
-          <NavLink
-            to="/"
-            onClick={() => setMenuOpen(false)}
-            className={({ isActive }) =>
-              isActive ? "text-yellow-400" : "hover:text-yellow-400"
-            }
-          >
-            Home
-          </NavLink>
+          {menuLinks}
 
-          <NavLink
-            to="/movies"
-            onClick={() => setMenuOpen(false)}
-            className={({ isActive }) =>
-              isActive ? "text-yellow-400" : "hover:text-yellow-400"
-            }
-          >
-            All Movies
-          </NavLink>
+          {/* Theme switch */}
+          <input
+            onChange={(e) => handleTheme(e.target.checked)}
+            type="checkbox"
+            defaultChecked={localStorage.getItem("theme") === "dark"}
+            className="toggle"
+          />
 
           {user ? (
             <>
-              <div className="w-10 h-10 rounded-full overflow-hidden border-2 border-green-400">
+              <div className="w-10 h-10 rounded-full overflow-hidden border-2 border-gradient-to-r from-[#FF3B3B] to-[#FFC14F]">
                 <img
                   src={user?.photoURL || img}
                   alt="User"
@@ -174,7 +178,7 @@ const Navbar = () => {
                   handleLogout();
                   setMenuOpen(false);
                 }}
-                className="bg-green-500 hover:bg-green-600 text-white px-4 py-1.5 rounded-lg font-medium"
+                className="bg-gradient-to-r from-[#FF3B3B] to-[#FFC14F] text-white px-4 py-1.5 rounded-lg font-medium"
               >
                 Logout
               </button>
@@ -191,7 +195,7 @@ const Navbar = () => {
               <NavLink
                 to="/auth/register"
                 onClick={() => setMenuOpen(false)}
-                className="bg-red-500 hover:bg-red-600 text-white px-4 py-1.5 rounded-lg font-medium"
+                className="bg-gradient-to-r from-[#FF3B3B] to-[#FFC14F] text-white px-4 py-1.5 rounded-lg font-medium"
               >
                 Register
               </NavLink>

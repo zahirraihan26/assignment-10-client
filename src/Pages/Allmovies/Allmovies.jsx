@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Moviecard from '../../Component/Moviecard/Moviecard';
 import { useLoaderData } from 'react-router';
+import { toast } from 'react-toastify';
 
 const API_BASE_URL = 'http://localhost:3000';
 
@@ -47,7 +48,7 @@ const Allmovies = () => {
 
   const handleRatingFilter = () => {
     if (minRating === '' || maxRating === '') {
-      alert('Please enter both min and max rating!');
+        toast('Please enter both min and max rating!');
       return;
     }
 
@@ -62,6 +63,7 @@ const Allmovies = () => {
 
   return (
     <div>
+        <div className='flex flex-col md:flex-row items-center md:items-start md:justify-between  px-5 py-4 mb-6'>
       <div className='flex flex-col items-center md:items-start text-center md:text-left mb-4 md:mb-0'>
         <h1 className='font-bold text-3xl sm:text-4xl'>All Movies</h1>
         <p className='font-semibold text-lg sm:text-2xl'>Browse our complete collection</p>
@@ -74,14 +76,14 @@ const Allmovies = () => {
         onChange={handleGenreChange}
       >
         {availableGenres.map((genre) => (
-          <option key={genre} value={genre}>
+          <option className='bg-gray-500' key={genre} value={genre}>
             {genre === 'All' ? 'All Genres' : genre}
           </option>
         ))}
       </select>
-
+      </div>
       {/* ⭐ Rating Filter Section */}
-      <div className='flex gap-2 mb-6'>
+      <div className='flex justify-center gap-2 mb-6'>
         <input
           type='number'
           placeholder='Min Rating'
