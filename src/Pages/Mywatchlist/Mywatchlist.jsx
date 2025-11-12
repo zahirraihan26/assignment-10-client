@@ -1,6 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../Provider/Authprovider';
 import Moviecard from '../../Component/Moviecard/Moviecard';
+import Navbar from '../../Component/Navbar/Navbar';
+import Footer from '../../Component/Footer/Footer';
 
 const Mywatchlist = () => {
   const { user } = useContext(AuthContext);
@@ -36,14 +38,20 @@ const Mywatchlist = () => {
   }
 
   return (
-    <div>
-    <div className="p-6">
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-        {movie.map((item) => (
-          <Moviecard key={item._id} movie={item} />
-        ))}
+    <div className=' flex flex-col items-center'>
+      <div className='pb-10'>
+        <Navbar></Navbar>
       </div>
-    </div>
+      <div className="p-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+          {movie.map((item) => (
+            <Moviecard key={item._id} movie={item} />
+          ))}
+        </div>
+      </div>
+      <div>
+        <Footer></Footer>
+      </div>
     </div>
   );
 };

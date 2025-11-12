@@ -1,14 +1,20 @@
 import React, { useEffect, useState } from "react";
+import Loading from "../Loading/Loading";
 
 const Banner = () => {
   const [topMovies, setTopMovies] = useState([]);
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [loading,setLoading]= useState(true);
 
   useEffect(() => {
     // Fetch top 3 movies
     fetch("http://localhost:3000/topMovies")
       .then((res) => res.json())
-      .then((data) => setTopMovies(data.topMovies))
+      .then((data) =>{ 
+
+        setTopMovies(data.topMovies)
+         setLoading(false);
+      })
       .catch((err) => console.error(err));
   }, []);
 
@@ -20,10 +26,12 @@ const Banner = () => {
     return () => clearInterval(interval);
   }, [topMovies]);
 
+  if (loading) return <Loading></Loading>
+
   if (topMovies.length === 0) return null; // Loading state
 
   return (
-    <div className="relative w-full h-150 rounded-2xl overflow-hidden">
+    <div className="relative max-w-full h-150 rounded-2xl overflow-hidden">
       {topMovies.map((movie, idx) => (
         <div
           key={movie._id}
