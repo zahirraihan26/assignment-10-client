@@ -6,7 +6,7 @@ import "aos/dist/aos.css";
 const StatsSection = () => {
   const [movieCount, setMovieCount] = useState(0);
   const [userCount, setUserCount] = useState(0);
-  const [highestRated, setHighestRated] = useState(null);
+  // const [highestRated, setHighestRated] = useState(null);
 
   useEffect(() => {
 
@@ -28,10 +28,10 @@ const StatsSection = () => {
       .then((data) => setUserCount(data.totalUsers))
       .catch((err) => console.error(err));
 
-    fetch("https://movie-master-pro-server-tau.vercel.app/highestRated")
-      .then((res) => res.json())
-      .then((data) => setHighestRated(data.highestRated))
-      .catch((err) => console.error(err));
+  //   fetch("https://movie-master-pro-server-tau.vercel.app/highestRated")
+  //     .then((res) => res.json())
+  //     .then((data) => setHighestRated(data.highestRated))
+  //     .catch((err) => console.error(err));
   }, []);
 
   return (
@@ -59,7 +59,9 @@ const StatsSection = () => {
         >
           <FaStar className="text-5xl text-red-400 mb-4" />
           <div className="text-4xl font-bold text-yellow-400 mb-1">
-            {highestRated ? highestRated.rating : "..."}
+            {/* {highestRated ? highestRated.rating : "..."} */}
+            ....
+
           </div>
           <div className="text-gray-300 text-lg">Highest Rated</div>
         </div>
