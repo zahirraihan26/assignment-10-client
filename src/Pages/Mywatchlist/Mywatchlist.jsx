@@ -106,11 +106,11 @@ const Mywatchlist = () => {
   return (
     <div className='flex flex-col items-center'>
       <Navbar />
-      <div className="p-6">
+      <div className="p-6 flex-1">
         {loading ? (
           <p className="text-center text-4xl text-gray-400 mt-10">Loading your watchlist...</p>
         ) : movie.length === 0 ? (
-          <p className="text-center text-4xl text-gray-400 mt-10">No movies in your watchlist yet.</p>
+          <p className="flex justify-center items-center text-center  lg:min-h-[500px] text-4xl text-gray-400 mt-10">No movies in your watchlist yet.</p>
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
             {movie.map((item) => (
@@ -119,7 +119,9 @@ const Mywatchlist = () => {
           </div>
         )}
       </div>
-      <Footer />
+      <div>
+        <Footer />
+      </div>
     </div>
   );
 };

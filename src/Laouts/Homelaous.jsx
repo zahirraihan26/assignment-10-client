@@ -15,7 +15,7 @@ const Homelaous = () => {
                
             </header>
 
-            <section className='mt-10 '>
+            <section className='mt-10 min-h-screen '>
               {state=="loading"? <Loading></Loading> :<Outlet></Outlet>}
             </section>
             <section>
